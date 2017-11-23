@@ -13,14 +13,21 @@
           <ais-search-box id="search_box" placeholder="Which dentist you are looking for..." class="search-input"></ais-search-box>
           <ais-results inline-template>
             <table>
+              <thead v-if="results.length > 0">
+                <td></td>
+                <td>Email</td>
+                <td>Full name</td>
+                <td>Address</td>
+                <td>Specialty</td>
+                <td>Phone</td>
+              </thead>
               <tbody>
                 <tr v-for="result in results" :key="result.objectID">
                   <td><img :src="result.image"/></td>
                   <td>{{ result.email }}</td>
-                  <td>{{ result.first_name }}</td>
-                  <td>{{ result.last_name }}</td>
-                  <td>{{ result.address }}</td>
-                  <td>{{ result.city }}</td>
+                  <td>{{ result.first_name }} - {{result.last_name}} </td>
+                  <td>{{ result.address }} - {{ result.city }}</td>
+                  <td>{{ result.specialty || "Not defined" }}</td>
                   <td>{{ result.phone }}</td>
                 </tr>
               </tbody>
