@@ -9,7 +9,7 @@
         <p>Look for a dentist?</p>
         <div>
           <ais-search-box id="search_box"
-                          placeholder="Which dentist you are looking for..."
+                          placeholder="I am looking for (first name, last name, city or specialty)... "
                           class="search-input">
           </ais-search-box>
           <ais-results inline-template v-show="searchStore._helper.state.query.length > 0">
