@@ -1,5 +1,4 @@
 <template>
-
   <div class="wrap text-center">
     <ais-index
       index-name="d4g_dentists_db"
@@ -40,18 +39,18 @@
 
     </ais-index>
   </div>
-
 </template>
 
 <script>
+  /* eslint-disable */
 
-  import { createFromAlgoliaCredentials } from 'vue-instantsearch';
-  const searchStore = createFromAlgoliaCredentials('4FB5SURL9L', '15e605b035695c9e33df0010b3fc204c');
+  import { createFromAlgoliaCredentials } from 'vue-instantsearch'
+  const searchStore = createFromAlgoliaCredentials('4FB5SURL9L', '15e605b035695c9e33df0010b3fc204c')
 
   export default {
     name: 'app',
     data() {
-      return { searchStore };
+      return { searchStore }
     }
   }
 </script>
