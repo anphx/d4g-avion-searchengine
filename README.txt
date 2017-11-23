@@ -12,7 +12,9 @@ npm run dev
 # build for production with minification
 npm run build
 
-## Team members
+
+Source code remain the property of the developer
+## AVION 2017
 1. An Pham
 2. Jean-Baptiste Biernacki
 3. Germain Déroche
