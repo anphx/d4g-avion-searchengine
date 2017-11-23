@@ -3,15 +3,17 @@
   <div class="wrap text-center">
     <ais-index
       index-name="d4g_dentists_db"
-      app-id="4FB5SURL9L"
-      api-key="15e605b035695c9e33df0010b3fc204c"
+      :search-store="searchStore"
       :auto-search="false" >
       <div class="wrap text-center">
         <h1>Welcome to AVION</h1>
         <p>Look for a dentist?</p>
         <div>
-          <ais-search-box id="search_box" placeholder="Which dentist you are looking for..." class="search-input"></ais-search-box>
-          <ais-results inline-template>
+          <ais-search-box id="search_box"
+                          placeholder="Which dentist you are looking for..."
+                          class="search-input">
+          </ais-search-box>
+          <ais-results inline-template v-show="searchStore._helper.state.query.length > 0">
             <table>
               <thead v-if="results.length > 0">
                 <td></td>
@@ -42,9 +44,16 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+
+  import { createFromAlgoliaCredentials } from 'vue-instantsearch';
+  const searchStore = createFromAlgoliaCredentials('4FB5SURL9L', '15e605b035695c9e33df0010b3fc204c');
+
+  export default {
+    name: 'app',
+    data() {
+      return { searchStore };
+    }
+  }
 </script>
 
 <style>
