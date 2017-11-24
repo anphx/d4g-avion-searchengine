@@ -8,16 +8,31 @@ const sourceMapEnabled = isProduction
 
 
 module.exports = {
-  loaders: utils.cssLoaders({
-    sourceMap: sourceMapEnabled,
-    extract: isProduction
-  }),
+  loaders: [
+    utils.cssLoaders({
+      sourceMap: sourceMapEnabled,
+      extract: isProduction
+    }),
+    {
+      test: /\.vue$/,
+      loader: 'vue'
+    },
+    {
+        test: /\.s[a|c]ss$/,
+        loader: 'style!css!sass'
+    }
+  ],
   cssSourceMap: sourceMapEnabled,
-  cacheBusting: config.dev.cacheBusting, 
+  cacheBusting: config.dev.cacheBusting,
   transformToRequire: {
     video: 'src',
     source: 'src',
     img: 'src',
     image: 'xlink:href'
+  },
+  vue: {
+    loaders: {
+      scss: 'style!css!sass'
+    }
   }
 }

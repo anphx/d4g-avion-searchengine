@@ -1,3 +1,9 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+.the-icons {
+  font-size: 15px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -16,21 +22,6 @@ body {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.ais-index table {
-  width: 100%;
-  border: solid;
-}
-
-.ais-index img {
-  width: 40px;
-  height: 40px;
-  padding: 3px;
-}
-
-.ais-index tbody, .ais-index td, .ais-index tr {
-  border: solid;
 }
 
 .ais-search-box__submit {
@@ -52,9 +43,59 @@ body {
 }
 
 .search-input > input {
-  width: 100%;
+  width: calc(100% - 3em);
   padding: 1.5em 1em;
   font-size: 1em;
   outline: 0;
   border: 5px solid #41b883;
+}
+
+.results-per-page {
+  text-align: right;
+  p {
+    display: inline-block;
+  }
+}
+
+/* ======================== RESULTS AREAS =============*/
+
+.results-wrapper {
+  .row {
+    border-radius: .25rem;
+    margin-bottom: 20px;
+    background-color: #eee;
+    box-shadow: 0 0 7px 0 #ccc,
+                0 0 15px 0 #eee;
+  }
+
+  .column{
+    padding: 5px 0 0;
+  }
+
+  img {
+    width: auto;
+    height: 90%;
+    padding: 3px;
+  }
+
+  p {
+    text-align: left;
+    color: black;
+  }
+}
+
+.ais-pagination {
+  list-style: none;
+  li {
+    display: inline-block;
+    padding: 0 3px;
+    a {
+      color: white;
+    }
+  }
+
+  .ais-pagination__item--active a {
+    color: darkblue;
+    font-weight: 500;
+  }
 }

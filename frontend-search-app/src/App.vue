@@ -12,28 +12,44 @@
                           placeholder="I am looking for (first name, last name, city or specialty)... "
                           class="search-input">
           </ais-search-box>
-          <ais-results inline-template v-show="searchStore._helper.state.query.length > 0">
-            <table>
-              <thead v-if="results.length > 0">
-                <td></td>
-                <td>Email</td>
-                <td>Full name</td>
-                <td>Address</td>
-                <td>Specialty</td>
-                <td>Phone</td>
-              </thead>
-              <tbody>
-                <tr v-for="result in results" :key="result.objectID">
-                  <td><img :src="result.image"/></td>
-                  <td>{{ result.email }}</td>
-                  <td>{{ result.first_name }} - {{result.last_name}} </td>
-                  <td>{{ result.address }} - {{ result.city }}</td>
-                  <td>{{ result.specialty || "Not defined" }}</td>
-                  <td>{{ result.phone }}</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="results-per-page">
+            <p>Show: </p>
+            <ais-results-per-page-selector :options="[10, 20, 30]"></ais-results-per-page-selector>
+            <p>per page </p>
+          </div>
+          <ais-pagination :padding="5"></ais-pagination>
+
+          <ais-results inline-template>
+            <div class="container-fluid results-wrapper">
+              <div class="row" v-for="item in results" :key="item.objectID">
+                <div class="col-sm-3">
+                  <img :src="item.image" class="img-responsive"/>
+                </div>
+                <div class="col-sm-9 column">
+                  <p>
+                    <a :href="'mailto:' + item.email">
+                      <span class="the-icons glyphicon glyphicon-envelope"></span>
+                    </a>
+                    <i>{{ item.email }}</i>
+                  </p>
+                  <p><strong>{{ item.first_name }} - {{item.last_name}}</strong></p>
+                  <p>
+                    <i>Specialty: </i>{{ item.specialty || "Not defined" }}
+                  </p>
+                  <p>{{ item.address }} - {{ item.city }}</p>
+                  <p>
+                    <span class="the-icons glyphicon glyphicon-phone-alt"></span>
+                    <i>{{ item.phone }}</i>
+                  </p>
+                </div>
+              </div>
+            </div>
           </ais-results>
+          <ais-no-results>
+             <template slot-scope="props">
+             	Sorry, no dentist found for <i>{{ props.query }}</i>. Please try with other keywords...
+             </template>
+          </ais-no-results>
         </div>
       </div>
 
@@ -51,10 +67,15 @@
     name: 'app',
     data() {
       return { searchStore }
+    },
+    methods: {
+      onPageChange() {
+        window.scrollTo(0,0);
+      }
     }
   }
 </script>
 
-<style>
+<style lang="scss">
   @import "assets/style.scss"
 </style>
