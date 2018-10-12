@@ -1,3 +1,5 @@
+Hackathon: Design4Green - 2017 - PERCCOM
+
 # d4g_avion_searchengine
 
 ## Build Setup
